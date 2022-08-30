@@ -62,7 +62,7 @@ class TeaTimeExtension(omni.ext.IExt):
 
     def show_window(self, menu, value):
         if value:
-            self._window = TeaWindow(TeaTimeExtension.WINDOW_NAME, width=250, height=250)
+            self._window = TeaWindow(TeaTimeExtension.WINDOW_NAME, width=200, height=200)
             self._window.set_visibility_changed_fn(self._visiblity_changed_fn)
         elif self._window:
             self._window.visible = False

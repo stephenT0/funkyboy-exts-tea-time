@@ -38,12 +38,12 @@ class TeaWindow(ui.Window):
   
         with self.frame:
             with ui.VStack():
-                style = {"margin_width": 20}
-                style={"background_color": 0x33FFF86}
+                #style = {"margin_width": 20}
+                style={"background_color": 0x33FFF86, "color": 0xFF00B976, "font_size": 16}
                 ui.Button("Is it Tea Time?", style=style,)
 
                 def on_click():
                     TeapotSpawn()
 
-                ui.Button("Make Tea", clicked_fn=lambda: on_click(), style={"Button": {"background_color":  0xFF00B976}}, tooltip="  spawns teapot at world center  ")
+                ui.Button("Make Tea", clicked_fn=lambda: on_click(), style={"Button": {"background_color":  0xFF00B976}, "font_size": 16}, tooltip="  spawns teapot at world center  ")
 
