@@ -1,36 +1,29 @@
 import omni.ui as ui
+import omni.ext
+import omni.kit.commands
 from .tea_pot_gen import TeapotSpawn
- 
 
-LABEL_WIDTH = 120
-SPACING = 4
+
+WINDOW_TITLE = "Tea Time"
 
 class TeaWindow(ui.Window):
-    def __init__(self, title: str, delegate=None, **kwargs):
-        self.__label_width = LABEL_WIDTH
+    def __init__(self, title, menu_path):
+        super().__init__(title, width=200, height=200)
+        self._menu_path = menu_path
+        self.set_visibility_changed_fn(self._on_visibility_changed)
+        self._build_ui()
+    
+    def on_shutdown(self):
+        self._win = None
 
-        super().__init__(title, **kwargs)
+    def show(self):
+        self.visible = True
+        self.focus()    
+    
+    def hide(self):
+        self.visible = False
 
-        
-        self.frame.set_build_fn(self._build_fn)
-  
-
-    def destroy(self):
-        # It will destroy all the children
-        super().destroy()
-
-    @property
-    def label_width(self):
-        """The width of the attribute label"""
-        return self.__label_width
-
-    @label_width.setter
-    def label_width(self, value):
-        """The width of the attribute label"""
-        self.__label_width = value
-        self.frame.rebuild()
-
-    def _build_fn(self):
+    def _build_ui(self):
         """
         The method that is called to build all the UI once the window is
         visible.
@@ -47,3 +40,5 @@ class TeaWindow(ui.Window):
 
                 ui.Button("Make Tea", clicked_fn=lambda: on_click(), style={"Button": {"background_color":  0xFF00B976}, "font_size": 16}, tooltip="  spawns teapot at world center  ")
 
+    def _on_visibility_changed(self, visible):
+        omni.kit.ui.get_editor_menu().set_value(self._menu_path, visible)
