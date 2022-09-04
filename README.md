@@ -3,9 +3,6 @@
 Spawns a Utah Teapot at world center. Use for testing different rendering engines.
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/VYdokLpoTmg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 ## Adding This Extension
 
 To add this extension to your Omniverse app:
